@@ -311,7 +311,8 @@ def write_html_report(report: dict) -> None:
             "</section>"
         )
 
-    findings_html = "".join(finding_sections) or "<p>No suspicious activity detected.</p>"
+    findings_html = "".join(
+        finding_sections) or "<p>No suspicious activity detected.</p>"
     recommendations_html = "".join(
         f"<li>{escape(recommendation)}</li>"
         for recommendation in report["recommendations"]
