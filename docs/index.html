@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Analysis Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem auto;
+            max-width: 1100px;
+            color: #1f2937;
+        }
+
+        h1 {
+            color: #12355b;
+        }
+
+        .summary {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .metric {
+            background: #eef4f8;
+            border-left: 4px solid #197278;
+            padding: 1rem;
+            min-width: 150px;
+        }
+
+        .metric strong {
+            display: block;
+            font-size: 1.4rem;
+            margin-top: .3rem;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 1rem 0 2rem;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #cbd5e1;
+            padding: .6rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: #12355b;
+            color: white;
+        }
+
+        .finding {
+            border-left: 4px solid #d97706;
+            padding-left: 1rem;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Security Analysis Report</h1>
+    <div class="summary">
+        <div class="metric">Events Analyzed<strong>11</strong></div>
+        <div class="metric">Findings<strong>3</strong></div>
+        <div class="metric">Risk Score<strong>95</strong></div>
+        <div class="metric">Risk Level<strong>HIGH</strong></div>
+    </div>
+
+    <h2>Event Statistics</h2>
+    <table>
+        <tr>
+            <th>Event Type</th>
+            <th>Count</th>
+        </tr>
+        <tr>
+            <td>Email_Sent</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>File_Access</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>File_Deletion</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Login_Failed</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>Login_Success</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>Service_Status</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Software_Update</td>
+            <td>1</td>
+        </tr>
+    </table>
+
+    <h2>User Activity</h2>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Events</th>
+        </tr>
+        <tr>
+            <td>guest</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>admin</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>John.Doe</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>system</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>jane.smith</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>mary.jones</td>
+            <td>1</td>
+        </tr>
+    </table>
+
+    <h2>Findings</h2>
+    <section class="finding">
+        <h3>1. [HIGH] Sensitive finance file copied to public share</h3>
+        <table>
+            <tr>
+                <th>Timestamp</th>
+                <th>User</th>
+                <th>Source IP</th>
+                <th>Event</th>
+                <th>Details</th>
+            </tr>
+            <tr>
+                <td>2025-07-30 08:20:20</td>
+                <td>John.Doe</td>
+                <td>192.168.1.5</td>
+                <td>File_Access</td>
+                <td>Copied: /finance/budget_2026_final.xlsx to /public_share</td>
+            </tr>
+        </table>
+    </section>
+    <section class="finding">
+        <h3>2. [CRITICAL] Administrative login from unusual location</h3>
+        <table>
+            <tr>
+                <th>Timestamp</th>
+                <th>User</th>
+                <th>Source IP</th>
+                <th>Event</th>
+                <th>Details</th>
+            </tr>
+            <tr>
+                <td>2025-07-30 08:30:40</td>
+                <td>admin</td>
+                <td>203.0.113.25</td>
+                <td>Login_Success</td>
+                <td>User &#x27;admin&#x27; logged in from external IP (unusual location)</td>
+            </tr>
+        </table>
+    </section>
+    <section class="finding">
+        <h3>3. [MEDIUM] Repeated login failures (3 attempts)</h3>
+        <table>
+            <tr>
+                <th>Timestamp</th>
+                <th>User</th>
+                <th>Source IP</th>
+                <th>Event</th>
+                <th>Details</th>
+            </tr>
+            <tr>
+                <td>2025-07-30 08:15:00</td>
+                <td>guest</td>
+                <td>10.0.0.100</td>
+                <td>Login_Failed</td>
+                <td>User &#x27;guest&#x27; attempted login from unknown IP (1 attempt)</td>
+            </tr>
+            <tr>
+                <td>2025-07-30 08:15:05</td>
+                <td>guest</td>
+                <td>10.0.0.100</td>
+                <td>Login_Failed</td>
+                <td>User &#x27;guest&#x27; attempted login (2 attempts)</td>
+            </tr>
+            <tr>
+                <td>2025-07-30 08:15:10</td>
+                <td>guest</td>
+                <td>10.0.0.100</td>
+                <td>Login_Failed</td>
+                <td>User &#x27;guest&#x27; attempted login (3 attempts)</td>
+            </tr>
+        </table>
+    </section>
+
+    <h2>Recommendations</h2>
+    <ul>
+        <li>Audit access to the exposed document.</li>
+        <li>Enable account lockout controls.</li>
+        <li>Reset administrative credentials if compromise is suspected.</li>
+        <li>Review MFA and authentication logs.</li>
+        <li>Review actions performed during the administrator session.</li>
+        <li>Review failed authentication activity.</li>
+        <li>Review guest account usage.</li>
+        <li>Review permissions on public share locations.</li>
+        <li>Verify authorization for financial document sharing.</li>
+        <li>Verify the external admin login with the account owner.</li>
+    </ul>
+
+    <h2>Notable Timeline</h2>
+    <table>
+        <tr>
+            <th>Timestamp</th>
+            <th>User</th>
+            <th>Event</th>
+        </tr>
+        <tr>
+            <td>2025-07-30 08:00:15</td>
+            <td>admin</td>
+            <td>Login_Success</td>
+        </tr>
+        <tr>
+            <td>2025-07-30 08:05:30</td>
+            <td>John.Doe</td>
+            <td>File_Access</td>
+        </tr>
+        <tr>
+            <td>2025-07-30 08:15:00</td>
+            <td>guest</td>
+            <td>Login_Failed</td>
+        </tr>
+        <tr>
+            <td>2025-07-30 08:15:05</td>
+            <td>guest</td>
+            <td>Login_Failed</td>
+        </tr>
+        <tr>
+            <td>2025-07-30 08:15:10</td>
+            <td>guest</td>
+            <td>Login_Failed</td>
+        </tr>
+        <tr>
+            <td>2025-07-30 08:20:20</td>
+            <td>John.Doe</td>
+            <td>File_Access</td>
+        </tr>
+        <tr>
+            <td>2025-07-30 08:30:40</td>
+            <td>admin</td>
+            <td>Login_Success</td>
+        </tr>
+    </table>
+</body>
+
+</html>
