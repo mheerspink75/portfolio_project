@@ -14,7 +14,7 @@ This app is a Python-based cybersecurity log analyzer. It reads a system activit
    - A finance file copied to a public share.
 6. Assigns a risk score and risk level based on the findings.
 7. Prints a formatted report in the terminal.
-8. Writes the same analysis to `index.html` as a standalone HTML report.
+8. Writes the same analysis to `docs/index.html` as a standalone HTML report.
 
 ## Risk Levels
 
@@ -27,7 +27,7 @@ This app is a Python-based cybersecurity log analyzer. It reads a system activit
 
 - `security_analysis_report.py` - Main application.
 - `system_activity_log_2025-07-30.txt` - Input activity log.
-- `index.html` - Generated browser-based report.
+- `docs/index.html` - Generated browser-based report.
 
 ## How to Run
 
@@ -37,7 +37,7 @@ Open a terminal in this project folder and run:
 python security_analysis_report.py
 ```
 
-The script prints the analysis to the terminal and creates or replaces `index.html`. Open `index.html` in a web browser to view the report.
+The script prints the analysis to the terminal and creates or replaces `docs/index.html`. Open `docs/index.html` in a web browser to view the report.
 
 ## Requirements
 

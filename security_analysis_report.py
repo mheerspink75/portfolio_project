@@ -8,7 +8,7 @@ import re
 
 
 LOG_FILE = Path(__file__).with_name("system_activity_log_2025-07-30.txt")
-HTML_REPORT_FILE = Path(__file__).with_name("index.html")
+HTML_REPORT_FILE = Path(__file__).parent / "docs" / "index.html"
 
 EVENT_TYPES = (
     "Login_Success",
@@ -370,6 +370,7 @@ def write_html_report(report: dict) -> None:
 </body>
 </html>
 """
+    HTML_REPORT_FILE.parent.mkdir(exist_ok=True)
     HTML_REPORT_FILE.write_text(html, encoding="utf-8")
     print(f"\nHTML report written to: {HTML_REPORT_FILE}")
 
